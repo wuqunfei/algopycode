@@ -1,0 +1,16 @@
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        states = [0] * n
+        for i in range(n):
+            rob_current = nums[i] + (states[i-2] if i> 1 else 0)
+            not_rob_current = states[i-1] if i> 0 else 0
+            states[i] = max(rob_current, not_rob_current)
+        return states[n-1]
+            
+            
+            
+            
+        
+# runtime:28 ms
+# memory:14.1 MB
