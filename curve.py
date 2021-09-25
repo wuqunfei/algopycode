@@ -10,7 +10,7 @@ class LeetCodeCurve:
 
     def find_question_by_commit(self) -> Dict:
         """
-        1. question id key
+        1. question id KEY
         2. review days
         :return:{8:[], 146:[1,2,4]}
         """
