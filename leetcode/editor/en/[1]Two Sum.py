@@ -50,5 +50,6 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        pass
         
 # leetcode submit region end(Prohibit modification and deletion)

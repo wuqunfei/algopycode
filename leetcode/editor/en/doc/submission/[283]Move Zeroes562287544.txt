@@ -1,0 +1,21 @@
+from typing import List
+
+
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        for index, node in enumerate(nums):
+            if node == 0:
+                del nums[index]
+                nums.append(node)
+        return nums
+
+
+
+# total_testcases:74
+# total_correct:28
+# input_formatted:"[0,0,1]"
+# expected_output:[1,0,0]
+# code_output:[0,1,0]
