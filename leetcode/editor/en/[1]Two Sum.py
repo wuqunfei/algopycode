@@ -49,6 +49,10 @@ from typing import List
 
 
 class Solution:
+    """
+    O(N) Time
+    O(N) Space
+    """
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         states = {}
         for i, value in enumerate(nums):
