@@ -58,15 +58,16 @@ class Solution:
     def maxArea(self, height: List[int]) -> int:
         n = len(height)
         i, j = 0, n - 1
-        zone = 0
+        square = 0
         while i < j:
-            current_zone = (j - i) * min(height[i], height[j])
-            zone = max(zone, current_zone)
+            square = max(square, (j - i) * min(height[i], height[j]))
             if height[i] < height[j]:
                 i += 1
             else:
                 j -= 1
-        return zone
+        return square
 
 
 # leetcode submit region end(Prohibit modification and deletion)
+s = Solution()
+print(s.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]))
