@@ -50,6 +50,16 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        pass
-        
-# leetcode submit region end(Prohibit modification and deletion)
+        states = {}
+        for i, value in enumerate(nums):
+            left = target - value
+            if left in states:
+                return [i, states[left]]
+            else:
+                states[value] = i
+    # leetcode submit region end(Prohibit modification and deletion)
+
+
+solution = Solution()
+y = solution.twoSum([2, 7, 11, 15], 9)
+print(y)
