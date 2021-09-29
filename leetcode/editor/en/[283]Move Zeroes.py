@@ -34,8 +34,8 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         j = 0
-        for i, node in enumerate(nums):
-            if node != 0:
+        for i, value in enumerate(nums):
+            if value != 0:
                 nums[j], nums[i] = nums[i], nums[j]
                 j += 1
         return nums
