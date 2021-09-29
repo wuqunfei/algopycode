@@ -71,18 +71,29 @@ Time O(N)
 Space O(3)
 """
 
+
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         n = len(nums)
         rev = []
         dq = deque()
         for i in range(n):
+            """
+            Remove until less the new value
+            """
             while dq and nums[dq[-1]] < nums[i]:
                 dq.pop()
             dq.append(i)
 
+            """
+            Remove left if queue length > 3
+            """
             while dq and i - dq[0] >= k:
                 dq.popleft()
+
+            """
+            Add value only index  > 2 windows size 
+            """
             if i >= k - 1:
                 rev.append(nums[dq[0]])
 
