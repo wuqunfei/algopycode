@@ -35,14 +35,18 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from typing import List, Optional
+
+
 class Solution:
     def climbStairs(self, n: int) -> int:
         if n < 2:
             return n
-        states = [None] * n
-        states[0], states[1] = 1, 2
+        states: List[Optional[int]] = [None] * n
+        states[0] = 1
+        states[1] = 2
         for i in range(2, n):
-            states[i] = states[i - 2] + states[i - 1]
+            states[i] = states[i - 1] + states[i - 2]
         return states[n - 1]
 
 
