@@ -60,14 +60,16 @@ class ListNode:
 
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
+        rev = False
         if not head or not head.next:
-            return False
-        slow = head
-        fast = head.next
-        while slow != fast:
-            if fast is None or fast.next is None:
-                return False
+            return rev
+        fast, slow = head, head
+        while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-        return True
+            if slow == fast:
+                rev = True
+                break
+        return rev
+
 # leetcode submit region end(Prohibit modification and deletion)
