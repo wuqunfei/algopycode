@@ -50,9 +50,8 @@ from typing import Optional
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev, curr = None, head
-        while curr:
-            curr.next, prev, curr = prev, curr, curr.next
+        prev, current = None, head
+        while current:
+            current.next, prev, current = prev, current, prev
         return prev
-
 # leetcode submit region end(Prohibit modification and deletion)
