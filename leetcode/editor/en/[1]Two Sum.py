@@ -53,14 +53,15 @@ class Solution:
     O(N) Time
     O(N) Space
     """
+
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        states = {}
-        for i, value in enumerate(nums):
-            left = target - value
-            if left in states:
-                return [i, states[left]]
+        complements = {}
+        for index, value in enumerate(nums):
+            complement = target - value
+            if complement in complements:
+                return [index, complements[complement]]
             else:
-                states[value] = i
+                complements[value] = index
     # leetcode submit region end(Prohibit modification and deletion)
 
 
