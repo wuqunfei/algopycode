@@ -57,15 +57,16 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isValid(self, s: str) -> bool:
-        parentheses = {'(': ')', '{': '}', '[': ']', '#': '#'}
+        parentheses = {'(': ')', '{': '}', '[': ']'}
         stack = []
         for char in s:
             if char in parentheses:
                 stack.append(char)
-            else:
-                top = stack.pop() if stack else '#'
-                if parentheses[top] != char:
+            elif char in parentheses.values():
+                if stack == [] or parentheses[stack.pop()] != char:
                     return False
+            else:
+                return False
         return not stack
 
 
