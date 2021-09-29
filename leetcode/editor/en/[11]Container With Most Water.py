@@ -56,16 +56,16 @@ class Solution:
     # O(n) Time
     # O(1) Space
     def maxArea(self, height: List[int]) -> int:
+        area = 0
         n = len(height)
         i, j = 0, n - 1
-        square = 0
         while i < j:
-            square = max(square, (j - i) * min(height[i], height[j]))
+            area = max(area, min(height[i], height[j]) * (j - i))
             if height[i] < height[j]:
                 i += 1
             else:
                 j -= 1
-        return square
+        return area
 
 
 # leetcode submit region end(Prohibit modification and deletion)
