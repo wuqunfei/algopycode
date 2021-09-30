@@ -28,21 +28,11 @@ O(N)
 """
 
 # leetcode submit region begin(Prohibit modification and deletion)
+from collections import Counter
+
+
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        counters = {}
-        for char in s:
-            if char in counters:
-                counters[char] += 1
-            else:
-                counters[char] = 1
-        for char in t:
-            if char in counters:
-                counters[char] -= 1
-                if counters[char] == 0:
-                    del counters[char]
-            else:
-                return False
-        return not counters
+        return Counter(s) == Counter(t)
 
 # leetcode submit region end(Prohibit modification and deletion)
