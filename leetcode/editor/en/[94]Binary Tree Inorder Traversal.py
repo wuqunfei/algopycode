@@ -62,6 +62,13 @@ class TreeNode:
 from typing import Optional, List
 
 
+"""
+0(N)  Time C = 2 * T(n/2) +1
+0(N)  Space C
+
+Next time stack 
+"""
+
 class Solution:
     def __init__(self):
         self.rev = []
