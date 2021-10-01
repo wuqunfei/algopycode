@@ -1,0 +1,33 @@
+"""
+# Definition for a Node.
+"""
+from typing import List
+
+
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+
+
+class Solution:
+    def __init__(self):
+        self.rev = []
+
+    def preorder(self, root: Node) -> List[int]:
+        self.traversal(root)
+        return self.rev
+
+    def traversal(self, root: Node):
+        if root:
+            if root.val:
+                self.rev.append(root.val)
+            for child in root.children:
+                self.preorder(child)
+
+
+# total_testcases:38
+# total_correct:23
+# input_formatted:"[1,null,10,3,null,5,0,null,6]"
+# expected_output:[1,10,5,0,3,6]
+# code_output:[1,10,5,3,6]
