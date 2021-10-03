@@ -1,31 +1,39 @@
+from sys import getrecursionlimit, setrecursionlimit
+getrecursionlimit()
+import timeit
 
 class RecursiveTemplate:
-    def __init__(self):
-        self.boundary_condition = 100
 
-    def recursion(self, level: int, params: int):
+    def __init__(self):
+        pass
+
+    def recursion(self, iterate: int, condition: int, params: int):
         """
         1. recursive terminator
         """
-        if level > self.boundary_condition:
+        if iterate > condition:
             """
-            4. process latest level logic
+            4. process result logic in last steps
             """
             self.process_last_result(...)
             return
         """
         2. process current level logic
         """
-        self.process_level(level, ...)
+        self.process_level(iterate, ...)
         """
         3. process next level logic in recursion
         """
-        self.recursion(level + 1, ...)
+        self.recursion(iterate + 1, ...)
 
         """
         5.(optional) reverse current level states 
         """
         self.reverse_status()
+
+        """
+        6.(optional) return results
+        """
 
     def process_last_result(self):
         pass

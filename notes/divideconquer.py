@@ -20,7 +20,7 @@ class DivideConquer:
         """
         solutions: List = list(map(self.divide_conquer, problems, [parameters] * len(problem)))
         """
-        4. combine all the solutions into results
+        4. combine and merge all the solutions into result
         """
         rev = reduce(self.combine, solutions)
         return rev
