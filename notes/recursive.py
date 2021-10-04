@@ -18,11 +18,11 @@ class RecursiveTemplate:
             self.process_last_result(...)
             return
         """
-        2. process current level logic
+        2. process current level logic(base case)
         """
         self.process_level(iterate, ...)
         """
-        3. process next level logic in recursion
+        3. process next level logic(recursion relationship)
         """
         self.recursion(iterate + 1, ...)
 
