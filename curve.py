@@ -11,15 +11,14 @@ class Question:
     def __init__(self):
         self.question_id: str = None
         self.question_name: str = None
-        self.dates: List[date] = None
-        self.reviewed: OrderedSet = OrderedSet()
-        self.reviews: dict = {1: {}, 2: {}, 4: {}, 7: {}, 15: {}}
+        self.dates: List[date] = []
+        self.reviews: dict = {1: [], 2: [], 4: [], 7: [], 15: []}
 
     def __str__(self):
         return f'id: {self.question_id}, ' \
                f'name: {self.question_name}, ' \
                f'reviews: {self.reviews}, ' \
-               f'reviewed: {self.reviewed}'
+               f'dates:{self.dates}'
 
 
 class LeetCodeCurve:
@@ -76,13 +75,18 @@ class LeetCodeCurve:
                     questions[index] = self.review_match(question, committed_day)
                 day_delta = tz.localize(day) - committed_day
                 days = day_delta.days
-                question.reviewed.add(days)
             questions[index] = question
         return questions
 
     def review_match(self, question: Question, start_day: date):
         for key, value in question.reviews.items():
-            question.reviews[key] = start_day + timedelta(days=key)
+            review_day = start_day + timedelta(days=key)
+            review_status = False
+            for committed_day in question.dates:
+                if committed_day.timetuple().tm_yday == review_day.timetuple().tm_year:
+                    review_status = True
+                    break
+            question.reviews[key] = [review_day, review_status]
         return question
 
 
