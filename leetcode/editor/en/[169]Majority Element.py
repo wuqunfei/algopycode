@@ -31,19 +31,17 @@ from typing import List
 
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        counter = {}
-        for value in nums:
-            if value in counter:
-                counter[value] += 1
-            else:
-                counter[value] = 1
+        count = 0
+        candidate = None
+
         for num in nums:
-            count = counter.get(num)
-            if count > len(nums) // 2:
-                return num
+            if count == 0:
+                candidate = num
+            count += (1 if num == candidate else -1)
+        return candidate
 
 
 # leetcode submit region end(Prohibit modification and deletion)
-
-s = Solution()
-print(s.majorityElement([3, 2, 3]))
+#
+# s = Solution()
+# print(s.majorityElement([3, 2, 3]))
