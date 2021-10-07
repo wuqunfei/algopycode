@@ -13,6 +13,7 @@ class Question:
         self.dates: List[date] = None
         self.reviews: set = set()
 
+
     def __str__(self):
         return f'id: {self.question_id}, ' \
                f'name: {self.question_name}, ' \
