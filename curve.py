@@ -1,7 +1,23 @@
 import glob
-from datetime import date
-from typing import List, Dict
+from datetime import date, datetime
+from pytz import timezone
+from typing import List
 import git
+
+
+class Question:
+
+    def __init__(self):
+        self.question_id: str = None
+        self.question_name: str = None
+        self.dates: List[date] = None
+        self.reviews: set = set()
+
+    def __str__(self):
+        return f'id: {self.question_id}, ' \
+               f'name: {self.question_name}, ' \
+               f'reviews: {self.reviews}, ' \
+               f'dates: {self.dates}'
 
 
 class LeetCodeCurve:
@@ -18,7 +34,7 @@ class LeetCodeCurve:
         ...
         # self.repository.clone(self.repository_path)
 
-    def find_question_by_commit(self) -> Dict:
+    def find_question_by_commit(self) -> List:
         """
         1. question id KEY
         2. review days
@@ -43,30 +59,27 @@ class LeetCodeCurve:
             for commit in commits:
                 question_dates.append(commit.committed_datetime)
 
-            return {'question_id': question_id,
-                    'question_name': question_name,
-                    'question_dates': question_dates}
+            question = Question()
+            question.question_id = question_id
+            question.question_name = question_name
+            question.dates = question_dates
+            return question
 
-    def review_question_by_day(self, day: date) -> List[int]:
-        """
-        :return:
-        """
-
-    def get_reports_by_status(self):
-        """
-
-        :return:
-        """
-
-    def get_report_by_tags(self):
-        """
-
-        :return:
-        """
-
-    def get_report_by_company(self, company_name: str):
-        """"""
+    def review_question_by_day(self, questions: List[Question], day: date = None) -> List[Question]:
+        if day is None:
+            day = datetime.now()
+        tz = timezone('Europe/Berlin')
+        for index, question in enumerate(questions):
+            for committed_day in question.dates:
+                day_delta = tz.localize(day) - committed_day
+                days = day_delta.days
+                question.reviews.add(days)
+            questions[index] = question
+        return questions
 
 
 curve = LeetCodeCurve()
-curve.find_question_by_commit()
+questions = curve.find_question_by_commit()
+questions = curve.review_question_by_day(questions, None)
+for question in questions:
+    print(question)
