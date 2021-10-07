@@ -59,11 +59,11 @@ class LeetCodeCurve:
             for commit in commits:
                 question_dates.append(commit.committed_datetime)
 
-            question = Question()
-            question.question_id = question_id
-            question.question_name = question_name
-            question.dates = question_dates
-            return question
+            qs = Question()
+            qs.question_id = question_id
+            qs.question_name = question_name
+            qs.dates = question_dates
+            return qs
 
     def review_question_by_day(self, questions: List[Question], day: date = None) -> List[Question]:
         if day is None:
