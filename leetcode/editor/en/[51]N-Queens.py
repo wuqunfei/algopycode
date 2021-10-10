@@ -39,20 +39,22 @@ from typing import List
 
 class Solution:
     def __init__(self):
-        self.rev = []
-        self.n = 0
         self.columns = set()
         self.hypotenuse_45 = set()
         self.hypotenuse_45_reverse = set()
 
     def solveNQueens(self, n: int) -> List[List[str]]:
         self.n = n
+        self.rev = []
         self.dfs(0, [])
-        return self.generate()
+        return self.rev
 
     def dfs(self, row, state):
         if row >= self.n:
-            self.rev.append(state)
+            matrix = ['.' * self.n] * self.n
+            for x, y in enumerate(state):
+                matrix[x] = matrix[x][:y] + 'Q' + matrix[x][y + 1:]
+            self.rev.append(matrix)
             return
 
         for column in range(self.n):
@@ -74,15 +76,6 @@ class Solution:
         self.columns.remove(column)
         self.hypotenuse_45.remove(row + column)
         self.hypotenuse_45_reverse.remove(row - column)
-
-    def generate(self):
-        ds = []
-        for x in self.rev:
-            matrix = []
-            for i in x:
-                matrix.append('.' * i + 'Q' + '.' * (self.n - i - 1))
-            ds.append(matrix)
-        return ds
 
 
 # leetcode submit region end(Prohibit modification and deletion)
