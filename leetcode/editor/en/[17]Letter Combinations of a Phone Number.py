@@ -63,7 +63,7 @@ class Solution:
         return self.rev
 
     def generate(self, index: int, digits: str, str_value: str):
-        # terminator
+        # terminator is length of the combination str
         if index == len(digits):
             self.rev.append(str_value)
             return
