@@ -33,18 +33,18 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         self.n = n
         left, right, str_value = 0, 0, ''
-        self.backtrace(left, right, str_value)
+        self.generator(left, right, str_value)
         return self.results
 
-    def backtrace(self, left, right, str_value):
+    def generator(self, left, right, str_value):
         if left == self.n and right == self.n:
             self.results.append(str_value)
             return
         else:
             if left < self.n:
-                self.backtrace(left + 1, right, str_value + self.parentheses_left)
-            if left > right:
-                self.backtrace(left, right + 1, str_value + self.parentheses_right)
+                self.generator(left + 1, right, str_value + self.parentheses_left)
+            elif left > right:
+                self.generator(left, right + 1, str_value + self.parentheses_right)
 
 
 s = Solution()
