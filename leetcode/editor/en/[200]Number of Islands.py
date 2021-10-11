@@ -53,27 +53,30 @@ class Solution:
     def __init__(self):
         self.row = 0
         self.column = 0
+        self.grid = []
 
     def numIslands(self, grid: [[str]]) -> int:
         amount = 0
+
         self.row = len(grid)
         self.column = len(grid[0])
+        self.grid = grid
 
         for x in range(self.row):
             for y in range(self.column):
-                if grid[x][y] == '1':
-                    self.dfs(grid, x, y)
+                if self.grid[x][y] == '1':
+                    self.dfs(x, y)
                     amount += 1
         return amount
 
-    def dfs(self, grid, x, y):
-        if not 0 <= x < self.row or not 0 <= y < self.column or grid[x][y] == '0':
+    def dfs(self, x, y):
+        if not 0 <= x < self.row or not 0 <= y < self.column or self.grid[x][y] == '0':
             return
-        grid[x][y] = '0'
-        self.dfs(grid, x + 1, y)
-        self.dfs(grid, x, y + 1)
-        self.dfs(grid, x - 1, y)
-        self.dfs(grid, x, y - 1)
+        self.grid[x][y] = '0'
+        self.dfs(x + 1, y)
+        self.dfs(x, y + 1)
+        self.dfs(x - 1, y)
+        self.dfs(x, y - 1)
 
 # leetcode submit region end(Prohibit modification and deletion)
 # solution = Solution()
