@@ -47,16 +47,15 @@ class TreeNode:
 
 
 from typing import Optional, List
-
+import collections
 
 class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         states = collections.defaultdict(collections.deque)
-        left_right = True
-        self.generate(node=root, level=0, states=states, direction=left_right)
+        self.generate(node=root, level=0, states=states, direction=True)
         return states.values()
 
-    def generate(self, node: TreeNode, level, states, direction):
+    def generate(self, node: TreeNode, level: int, states: dict, direction: bool):
         if node:
             if direction:
                 states[level].append(node.val)
@@ -64,6 +63,5 @@ class Solution:
                 states[level].appendleft(node.val)
             self.generate(node.left, level + 1, states, not direction)
             self.generate(node.right, level + 1, states, not direction)
-
 
 # leetcode submit region end(Prohibit modification and deletion)
