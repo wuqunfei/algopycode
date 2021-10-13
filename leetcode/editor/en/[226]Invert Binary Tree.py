@@ -40,7 +40,12 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+from idlelib.tree import TreeNode
+from typing import Optional
+
+
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        pass
         
 # leetcode submit region end(Prohibit modification and deletion)
