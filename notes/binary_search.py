@@ -9,5 +9,7 @@ def bs(array: list, target: int):
             return
         elif array[mid] < target:
             left = mid + 1
+            # left + >>>>
         else:
             right = mid - 1
+            # right - <<<<
