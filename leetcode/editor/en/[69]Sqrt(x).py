@@ -33,20 +33,14 @@
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
+
     def mySqrt(self, x: int) -> int:
         if x < 2:
             return x
-        left, right = 1, x
-        while left <= right:
-            mid = left + (right - left) // 2
-            val = mid * mid
-            if val == x:
-                return mid
-            if val > x:
-                right = mid - 1
-            elif val < x:
-                left = mid + 1
-        return right
+        r = x
+        while r * r > x:
+            r = (r + x // r) // 2
+        return r
 
 
 # leetcode submit region end(Prohibit modification and deletion)
