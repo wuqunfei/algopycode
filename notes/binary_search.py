@@ -7,7 +7,7 @@ def bs(array: list, target: int):
         mid = (left + right) // 2
         if array[mid] == target:
             # find the target break or return the value
-            return
+            return 1
         elif array[mid] < target:
             # TODO generic condition is changing
             left = mid + 1
@@ -15,3 +15,4 @@ def bs(array: list, target: int):
         else:
             right = mid - 1
             # right - <<<<
+        return -1

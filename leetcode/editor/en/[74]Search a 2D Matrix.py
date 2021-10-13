@@ -37,7 +37,7 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 from typing import List
 
-# TC: O(logN) * O(logN)
+# TC: O(logN) * O(logM)
 # SC: O(1)
 
 class Solution:
