@@ -12,7 +12,9 @@ class Node:
 class Search:
 
     def __init__(self):
+        # DFS
         self.visited = set()
+        # BFS
         self.queue = collections.deque()
 
     def depth_first_search(self, node: Node):
@@ -28,8 +30,8 @@ class Search:
         self.queue.append(node)
         while self.queue:
             leaf = self.queue.popleft()
-            nodes = self.children(node)
-            self.queue.append(nodes)
+            for node in self.children(leaf):
+                self.queue.append(node)
 
     def priority_search(self, node: PriorityQueue):
         while node:
