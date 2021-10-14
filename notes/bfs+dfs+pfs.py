@@ -28,7 +28,6 @@ class Search:
         self.queue.append(node)
         while self.queue:
             leaf = self.queue.popleft()
-            self.visited.add(leaf)
             nodes = self.children(node)
             self.queue.append(nodes)
 
