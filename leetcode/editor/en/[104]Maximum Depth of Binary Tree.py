@@ -57,23 +57,12 @@ class TreeNode:
 
 
 class Solution:
-    def __init__(self):
-        self.levels = set()
-        self.visited = set()
-
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        self.traverse(root, 1)
-        return max(self.levels) if self.levels else 0
+        if root is None:
+            return 0
+        else:
+            left_height = self.maxDepth(root.left)
+            right_height = self.maxDepth(root.right)
+            return max(left_height, right_height) + 1
 
-    def traverse(self, root: Optional[TreeNode], layer: int):
-        if root:
-            if root in self.visited:
-                return
-            self.visited.add(root)
-            self.levels.add(layer)
-            for node in [root.left, root.right]:
-                if node not in self.visited:
-                    self.traverse(root.left, layer + 1)
-                    self.traverse(root.right, layer + 1)
-
-# leetcode submit region end(Prohibit modification and deletion)
+        # leetcode submit region end(Prohibit modification and deletion)
