@@ -71,4 +71,5 @@ class Solution:
 
         return validate(root)
 
+# TODO https://leetcode.com/problems/validate-binary-search-tree/discuss/1509644/Java-O(N)-Recursive-solution
 # leetcode submit region end(Prohibit modification and deletion)
