@@ -22,5 +22,5 @@ class RB:
     def try_candidate(self, next_candidate):
         pass
 
-    def revese_candidate(self, next_candidate):
+    def reverse_candidate(self, next_candidate):
         pass
