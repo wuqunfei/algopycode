@@ -55,14 +55,11 @@
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        states = [[0] * n for _ in range(m)] # column and row exchange to init
+        states = [[1] * n for _ in range(m)]  # column and row exchange to init
 
-        for x in range(m):
-            for y in range(n):
-                if x == 0 or y == 0:
-                    states[x][y] = 1   # edage is 1, there is no another way
-                else:
-                    states[x][y] = states[x - 1][y] + states[x][y - 1]
+        for x in range(1, m):
+            for y in range(1, n):
+                states[x][y] = states[x - 1][y] + states[x][y - 1]
         return states[m - 1][n - 1]
 
 
