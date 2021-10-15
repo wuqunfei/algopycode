@@ -71,3 +71,4 @@ class Solution:
 
 solution = Solution()
 print(solution.uniquePathsWithObstacles([[1, 0, 0], [0, 1, 0], [0, 0, 0]]))
+#https://leetcode-cn.com/problems/unique-paths-ii/solution/jian-dan-dpbi-xu-miao-dong-by-sweetiee/
