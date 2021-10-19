@@ -30,7 +30,7 @@
 # Dynamic Programming 👍 3203 👎 255
 
 
-# leetcode submit region begin(Prohibit modification and deletion)
+# TODO 2 pointer leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
         m = len(s)
@@ -42,8 +42,5 @@ class Solution:
                     dp[i][j] = dp[i - 1][j - 1] + 1
                 else:
                     dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
-                if dp[m][n] == len(s):
-                    return True
-        return False
-
+        return dp[m][n] == len(s)
 # leetcode submit region end(Prohibit modification and deletion)
