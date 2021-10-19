@@ -42,6 +42,11 @@ class Solution:
             for j in range(i, size):
                 if s[i] == s[j]:
                     dp[i][j] = j - i <= 2 or dp[i + 1][j - 1]
+                    # need dp[i+1][j-1] firstly, then dp[i][j]
+                    # direction
+
+                    # top -> down, left -> right
+                    # down -> top, left -> right, so this question i range(n-1, -1, -1)
                     if dp[i][j]:
                         rev += 1
         return rev
