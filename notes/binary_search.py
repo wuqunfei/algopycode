@@ -1,3 +1,4 @@
+import bisect
 # O(N) -> O(logN)
 def bs(array: list, target: int):
     length = len(sorted(list))
@@ -7,7 +8,7 @@ def bs(array: list, target: int):
         mid = (left + right) // 2
         if array[mid] == target:
             # find the target break or return the value
-            return 1
+            return mid
         elif array[mid] < target:
             # TODO generic condition is changing
             left = mid + 1
@@ -15,4 +16,4 @@ def bs(array: list, target: int):
         else:
             right = mid - 1
             # right - <<<<
-        return -1
+    return -1
