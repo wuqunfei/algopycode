@@ -44,6 +44,7 @@
 
 
 # leetcode submit region begin(Prohibit modification and deletion)
+import bisect
 from typing import List
 
 
@@ -63,20 +64,14 @@ class Solution:
         return rev
 
     def binaryLIS(self, nums: List[int]) -> int:
-        tails = [0] * len(nums)
-        res = 0
+        tails = []
         for num in nums:
-            i, j = 0, res
-            while i < j:
-                m = (i + j) // 2
-                if tails[m] < num:
-                    i = m + 1
-                else:
-                    j = m
-            tails[i] = num
-            if j == res: res += 1
-
-        return res
+            i = bisect.bisect_left(tails, num)
+            if i == len(tails):
+                tails.append(num)
+            else:
+                tails[i] = num
+        return len(tails)
 
         # leetcode submit region end(Prohibit modification and deletion)
 

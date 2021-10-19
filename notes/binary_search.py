@@ -1,4 +1,6 @@
 import bisect
+
+
 # O(N) -> O(logN)
 def bs(array: list, target: int):
     length = len(sorted(list))
