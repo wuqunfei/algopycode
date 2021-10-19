@@ -63,6 +63,7 @@ class Solution:
             rev = max(rev, dp[i])
         return rev
 
+    # https: // leetcode - cn.com / problems / longest - increasing - subsequence / solution / zui - chang - shang - sheng - zi - xu - lie - dong - tai - gui - hua - 2 /
     def binaryLIS(self, nums: List[int]) -> int:
         tails = []
         for num in nums:
