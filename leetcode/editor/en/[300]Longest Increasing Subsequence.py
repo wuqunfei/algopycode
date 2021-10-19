@@ -62,9 +62,25 @@ class Solution:
             rev = max(rev, dp[i])
         return rev
 
+    def binaryLIS(self, nums: List[int]) -> int:
+        tails = [0] * len(nums)
+        res = 0
+        for num in nums:
+            i, j = 0, res
+            while i < j:
+                m = (i + j) // 2
+                if tails[m] < num:
+                    i = m + 1
+                else:
+                    j = m
+            tails[i] = num
+            if j == res: res += 1
 
-# leetcode submit region end(Prohibit modification and deletion)
+        return res
+
+        # leetcode submit region end(Prohibit modification and deletion)
+
 
 solution = Solution()
-x = solution.lengthOfLIS([0, 1, 0, 3, 1])
+x = solution.binaryLIS([0, 1, 0, 3, 1])
 print(x)
