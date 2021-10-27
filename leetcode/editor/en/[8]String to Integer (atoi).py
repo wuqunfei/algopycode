@@ -129,10 +129,16 @@
 #  
 #  Related Topics String 👍 677 👎 1847
 
+import re
+
 
 # leetcode submit region begin(Prohibit modification and deletion)
 class Solution:
     def myAtoi(self, s: str) -> int:
-        pass
-        
+        return max(min(int(*re.findall('^[\+\-]?\d+', s.lstrip())), 2 ** 31 - 1), -2 ** 31)
+
+
 # leetcode submit region end(Prohibit modification and deletion)
+
+solution = Solution()
+print(solution.myAtoi('-123abc'))
